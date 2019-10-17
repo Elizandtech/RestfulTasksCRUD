@@ -1,0 +1,156 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+  .content {
+    display: flex;
+    margin: 32px auto;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+
+
+ 
+
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+</style>
+
+
+<!-- <span>{{tasks | json}}</span> -->
+<!-- Highlight Card -->
+<!-- <div class="card highlight-card card-small text-center">
+  <span>{{title}}</span>
+</div> -->
+<!-- 
+  <input type="text" [value]="first_name"/>
+  <p *ngIf="loggedIn">You are logged in!</p>
+  <p *ngFor="let snack of snacks">{{snack}}</p>
+  <p *ngIf="snacks.length > 3">You have enough snacks</p> -->
+<div class="container">
+  <div class="my-5">
+      <h2>New Task</h2>
+  <!--     <p> {{ newTask | json }} </p> -->
+      <form (submit)="onSubmit()">
+          <div class="form-group">
+            <label for="taskTitle">Title</label>
+            <input type="text" class="form-control" name="newTask.title" [(ngModel)]="newTask.title" id="taskTitle"/>
+          </div>
+          <div class="form-group">
+            <label for="taskDescription">Description</label>
+            <input type="text" class="form-control" name="newTask.description" [(ngModel)]="newTask.description" id="taskDescription"/>
+          </div>
+          <button type="submit" class="btn btn-success">Add Task</button>
+        </form>
+  </div>
+  <!-- <div>
+    <!-- <button (click)="getTasksFromService()">Get All Tasks</button> -->
+    <!-- <ul *ngFor="let task of tasks">
+      <li>{{task.title}}    <button (click)="showDetails(task)">Show Details</button></li>
+    </ul> -->
+    <!-- </div> -->
+    <h2>All The Tasks:</h2>
+    <div class="row">
+      <table class="table table-striped col">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td scope='row'>{{task.title}}</td>
+            <td>{{task.description}}</td>
+            <td><button class="btn btn-primary" (click)="onDetails(task)">Edit</button> | <button class="btn btn-danger" (click)="onDelete(task._id)">Delete</button> </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col-3" *ngIf='editTask'>
+          <h2>Edit Task</h2>
+      <!--     <p> {{ editTask | json }} </p> -->
+          <form (submit)="onEditTask()">
+              <div class="form-group">
+                <label for="taskTitle">Title</label>
+                <input type="text" class="form-control" name="editTask.title" [(ngModel)]="editTask.title" id="taskTitle"/>
+              </div>
+              <div class="form-group">
+                <label for="taskDescription">Description</label>
+                <input type="text" class="form-control" name="editTask.description" [(ngModel)]="editTask.description" id="taskDescription"/>
+              </div>
+              <button type="submit" class="btn btn-primary">Edit Task</button>
+            </form>
+      </div>
+  </div>
+</div>
+
+
+  
+
+
+
+<router-outlet></router-outlet>
